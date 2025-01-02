@@ -1,0 +1,53 @@
+import time
+import random
+
+class RealityManifestor:
+    def __init__(self):
+        self.goals = []
+        print("✨ Welcome to the Reality Manifestor! ✨")
+
+    def add_goal(self, goal):
+        self.goals.append({"goal": goal, "achieved": False})
+        print(f"Goal added: '{goal}'.")
+
+    def visualize(self):
+        if not self.goals:
+            print("No goals to visualize. Add some dreams to chase!")
+            return
+
+        print("\n✨ Take a deep breath and visualize your goals...")
+        for g in self.goals:
+            print(f"Imagine achieving: {g['goal']} 🪄")
+            time.sleep(1)
+        print("Visualization complete! Focus your energy and begin taking action.")
+
+    def take_action(self, goal):
+        print(f"\nTaking action toward: '{goal}'...")
+        result = random.choice([True, False])
+        time.sleep(2)
+        if result:
+            self.mark_goal_as_achieved(goal)
+        else:
+            print("Action was a step forward. Keep pushing toward your vision!")
+
+    def mark_goal_as_achieved(self, goal):
+        for g in self.goals:
+            if g["goal"] == goal:
+                g["achieved"] = True
+                print(f"🎉 Goal achieved: '{goal}'! Reality manifested!")
+                return
+        print(f"No matching goal found for: '{goal}'.")
+
+    def review_progress(self):
+        print("\n📊 Your Goals Progress:")
+        for g in self.goals:
+            status = "Achieved" if g["achieved"] else "In Progress"
+            print(f" - {g['goal']}: {status}")
+
+if __name__ == "__main__":
+    manifestor = RealityManifestor()
+    manifestor.add_goal("Write a bestselling book")
+    manifestor.add_goal("Travel to space")
+    manifestor.visualize()
+    manifestor.take_action("Write a bestselling book")
+    manifestor.review_progress()
